@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Quản lý thư viện</title>
+	<link rel="stylesheet" href="../Public/css/home.css">
+	<meta name="description" content="Giao diện trang chủ hệ thống quản lý thư viện">
+</head>
+<body>
+	<header class="site-header">
+		<div class="container header-inner">
+			<h1 class="logo">Thư viện Trường Học</h1>
+			<nav class="main-nav">
+				<a href="/">Trang chủ</a>
+				<a href="/books">Sách</a>
+				<a href="/authors">Tác giả</a>
+				<a href="/members">Độc giả</a>
+				<a href="/borrow">Mượn/Trả</a>
+				<a href="/stats">Thống kê</a>
+			</nav>
+		</div>
+	</header>
+
+	<main>
+		<section class="hero">
+			<div class="container hero-inner">
+				<div class="hero-text">
+					<h2>Quản lý thư viện — Nhanh gọn, trực quan</h2>
+					<p>Tra cứu sách, theo dõi mượn trả và quản lý độc giả dễ dàng.</p>
+					<form action="/search" method="GET" class="search-form">
+						<input type="search" name="q" placeholder="Tìm sách theo tên, tác giả, ISBN..." aria-label="Tìm kiếm">
+						<button type="submit">Tìm</button>
+					</form>
+				</div>
+				<div class="hero-stats">
+					<div class="stat">
+						<span class="num"><%= typeof stats !== 'undefined' && stats.books ? stats.books : '—' %></span>
+						<span class="label">Tổng số sách</span>
+					</div>
+					<div class="stat">
+						<span class="num"><%= typeof stats !== 'undefined' && stats.members ? stats.members : '—' %></span>
+						<span class="label">Độc giả</span>
+					</div>
+					<div class="stat">
+						<span class="num"><%= typeof stats !== 'undefined' && stats.borrowed ? stats.borrowed : '—' %></span>
+						<span class="label">Đang mượn</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="books container">
+			<h3>Sách mới cập nhật</h3>
+			<% const list = typeof books !== 'undefined' ? books : []; %>
+			<div class="book-grid">
+				<% if (list.length === 0) { %>
+					<p class="empty">Chưa có sách hiển thị.</p>
+				<% } else { %>
+					<% list.forEach(function(book){ %>
+						<article class="book-card">
+							<div class="cover"><img src="<%= book.cover || '/images/placeholder-book.png' %>" alt="Bìa sách"></div>
+							<div class="info">
+								<h4 class="title"><%= book.title %></h4>
+								<p class="meta"><%= book.author %> — <%= book.year || 'N/A' %></p>
+								<a href="/books/<%= book.id %>" class="btn">Xem chi tiết</a>
+							</div>
+						</article>
+					<% }) %>
+				<% } %>
+			</div>
+		</section>
+	</main>
+
+	<footer class="site-footer">
+		<div class="container footer-inner">
+			<p>Bản quyền © <%= new Date().getFullYear() %> Thư viện. Bảo lưu mọi quyền.</p>
+		</div>
+	</footer>
+</body>
+</html>

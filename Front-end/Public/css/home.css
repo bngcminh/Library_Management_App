@@ -1,0 +1,53 @@
+/* Reset tối giản */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root{
+	--primary:#1f6feb;
+	--muted:#6b7280;
+	--bg:#f7f9fc;
+	--card:#ffffff;
+	--accent:#0ea5a4;
+}
+body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:var(--bg); color:#111; line-height:1.4}
+.container{max-width:1100px; margin:0 auto; padding:24px}
+.site-header{background:var(--card); border-bottom:1px solid #e6e9ef}
+.header-inner{display:flex; align-items:center; justify-content:space-between}
+.logo{font-size:1.25rem; color:var(--primary)}
+.main-nav a{margin-left:18px; color:var(--muted); text-decoration:none; font-weight:600}
+.main-nav a:hover{color:var(--primary)}
+
+.hero{padding:36px 0}
+.hero-inner{display:flex; gap:24px; align-items:center}
+.hero-text{flex:1}
+.hero-text h2{font-size:1.8rem; margin-bottom:8px}
+.hero-text p{color:var(--muted); margin-bottom:16px}
+.search-form{display:flex; gap:8px}
+.search-form input[type="search"]{flex:1; padding:10px 12px; border:1px solid #dfe6ef; border-radius:6px}
+.search-form button{background:var(--primary); color:#fff; border:none; padding:10px 14px; border-radius:6px; cursor:pointer}
+.search-form button:hover{opacity:0.95}
+
+.hero-stats{display:flex; gap:12px}
+.stat{background:var(--card); padding:12px 16px; border-radius:8px; text-align:center; min-width:110px; box-shadow:0 1px 2px rgba(16,24,40,0.04)}
+.stat .num{display:block; font-weight:700; font-size:1.25rem}
+.stat .label{color:var(--muted); font-size:0.9rem}
+
+.books{padding:24px 0}
+.books h3{margin-bottom:14px}
+.book-grid{display:grid; grid-template-columns: repeat(auto-fill,minmax(220px,1fr)); gap:16px}
+.book-card{background:var(--card); border-radius:10px; overflow:hidden; box-shadow:0 6px 18px rgba(15,23,42,0.06); display:flex; flex-direction:column}
+.cover{height:160px; overflow:hidden; border-bottom:1px solid #f1f5f9}
+.cover img{width:100%; height:100%; object-fit:cover; display:block}
+.book-card .info{padding:12px}
+.book-card .title{font-size:1rem; margin-bottom:6px}
+.book-card .meta{font-size:0.85rem; color:var(--muted); margin-bottom:8px}
+.btn{display:inline-block; padding:8px 10px; background:var(--accent); color:#fff; border-radius:6px; text-decoration:none}
+
+.empty{color:var(--muted)}
+
+.site-footer{padding:18px 0; margin-top:32px; border-top:1px solid #eef2f6; background:transparent}
+.footer-inner p{color:var(--muted); text-align:center}
+
+@media (max-width:800px){
+	.hero-inner{flex-direction:column}
+	.header-inner{flex-direction:column; align-items:flex-start; gap:10px}
+	.main-nav a{margin-left:8px}
+}
