@@ -3,78 +3,182 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>Quản lý thư viện</title>
+	<title>Quản lý thư viện - Hệ thống quản lý tư liệu</title>
 	<link rel="stylesheet" href="/css/home.css">
-	<meta name="description" content="Giao diện trang chủ hệ thống quản lý thư viện">
+	<meta name="description" content="Hệ thống quản lý thư viện trường học - Tra cứu sách, theo dõi mượn trả và quản lý độc giả">
 </head>
 <body>
+	<!-- Header Navigation -->
 	<header class="site-header">
 		<div class="container header-inner">
-			<h1 class="logo">Thư viện Trường Học</h1>
+			<div class="header-logo">
+				<h1 class="logo">📚 Thư viện Trường Học</h1>
+			</div>
 			<nav class="main-nav">
-				<a href="/">Trang chủ</a>
-				<a href="/books">Sách</a>
-				<a href="/authors">Tác giả</a>
-				<a href="/members">Độc giả</a>
-				<a href="/borrow">Mượn/Trả</a>
-				<a href="/stats">Thống kê</a>
+				<a href="/" class="nav-link active">Trang chủ</a>
+				<a href="/books" class="nav-link">Sách</a>
+				<a href="/authors" class="nav-link">Tác giả</a>
+				<a href="/members" class="nav-link">Độc giả</a>
+				<a href="/borrow" class="nav-link">Mượn/Trả</a>
+				<a href="/stats" class="nav-link">Thống kê</a>
 			</nav>
 		</div>
 	</header>
 
 	<main>
+		<!-- Hero Section -->
 		<section class="hero">
 			<div class="container hero-inner">
 				<div class="hero-text">
-					<h2>Quản lý thư viện — Nhanh gọn, trực quan</h2>
-					<p>Tra cứu sách, theo dõi mượn trả và quản lý độc giả dễ dàng.</p>
+					<h2>Chào mừng đến thư viện</h2>
+					<p>Hệ thống quản lý tư liệu tích hợp - Tra cứu sách, theo dõi mượn trả và quản lý độc giả một cách dễ dàng và hiệu quả.</p>
 					<form action="/search" method="GET" class="search-form">
-						<input type="search" name="q" placeholder="Tìm sách theo tên, tác giả, ISBN..." aria-label="Tìm kiếm">
-						<button type="submit">Tìm</button>
+						<input type="search" name="q" placeholder="Tìm sách theo tên, tác giả, ISBN..." aria-label="Tìm kiếm sách">
+						<button type="submit" class="btn-search">Tìm kiếm</button>
 					</form>
 				</div>
-				<div class="hero-stats">
-					<div class="stat">
-						<span class="num"><%= typeof stats !== 'undefined' && stats.books ? stats.books : '—' %></span>
-						<span class="label">Tổng số sách</span>
+				<div class="hero-illustration">
+					<div class="illustration-placeholder">📖</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Statistics Section -->
+		<section class="stats-section container">
+			<div class="stats-grid">
+				<div class="stat-card">
+					<div class="stat-icon">📕</div>
+					<div class="stat-content">
+						<span class="stat-num"><%= typeof stats !== 'undefined' && stats.books ? stats.books : '0' %></span>
+						<span class="stat-label">Tổng số sách</span>
 					</div>
-					<div class="stat">
-						<span class="num"><%= typeof stats !== 'undefined' && stats.members ? stats.members : '—' %></span>
-						<span class="label">Độc giả</span>
+				</div>
+				<div class="stat-card">
+					<div class="stat-icon">👥</div>
+					<div class="stat-content">
+						<span class="stat-num"><%= typeof stats !== 'undefined' && stats.members ? stats.members : '0' %></span>
+						<span class="stat-label">Độc giả đăng ký</span>
 					</div>
-					<div class="stat">
-						<span class="num"><%= typeof stats !== 'undefined' && stats.borrowed ? stats.borrowed : '—' %></span>
-						<span class="label">Đang mượn</span>
+				</div>
+				<div class="stat-card">
+					<div class="stat-icon">📤</div>
+					<div class="stat-content">
+						<span class="stat-num"><%= typeof stats !== 'undefined' && stats.borrowed ? stats.borrowed : '0' %></span>
+						<span class="stat-label">Đang mượn</span>
+					</div>
+				</div>
+				<div class="stat-card">
+					<div class="stat-icon">✍️</div>
+					<div class="stat-content">
+						<span class="stat-num"><%= typeof stats !== 'undefined' && stats.authors ? stats.authors : '0' %></span>
+						<span class="stat-label">Tác giả</span>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<section class="books container">
-			<h3>Sách mới cập nhật</h3>
+		<!-- Quick Actions -->
+		<section class="quick-actions container">
+			<h3 class="section-title">Thao tác nhanh</h3>
+			<div class="actions-grid">
+				<a href="/books" class="action-card">
+					<div class="action-icon">🔍</div>
+					<h4>Tìm sách</h4>
+					<p>Tra cứu sách theo các tiêu chí</p>
+				</a>
+				<a href="/members" class="action-card">
+					<div class="action-icon">📋</div>
+					<h4>Danh sách độc giả</h4>
+					<p>Xem thông tin độc giả</p>
+				</a>
+				<a href="/borrow" class="action-card">
+					<div class="action-icon">🏷️</div>
+					<h4>Mượn/Trả sách</h4>
+					<p>Quản lý mượn trả tư liệu</p>
+				</a>
+				<a href="/stats" class="action-card">
+					<div class="action-icon">📊</div>
+					<h4>Thống kê</h4>
+					<p>Xem báo cáo chi tiết</p>
+				</a>
+			</div>
+		</section>
+
+		<!-- Featured Books Section -->
+		<section class="books-section container">
+			<h3 class="section-title">Sách mới cập nhật</h3>
 			<% const list = typeof books !== 'undefined' ? books : []; %>
 			<div class="book-grid">
 				<% if (list.length === 0) { %>
-					<p class="empty">Chưa có sách hiển thị.</p>
+					<div class="empty-state">
+						<p class="empty-icon">📚</p>
+						<p class="empty-text">Chưa có sách hiển thị.</p>
+					</div>
 				<% } else { %>
 					<% list.forEach(function(book){ %>
 						<article class="book-card">
-							<div class="cover"><img src="<%= book.cover || '/images/placeholder-book.png' %>" alt="Bìa sách"></div>
-							<div class="info">
-								<h4 class="title"><%= book.title %></h4>
-								<p class="meta"><%= book.author %> — <%= book.year || 'N/A' %></p>
-								<a href="/books/<%= book.id %>" class="btn">Xem chi tiết</a>
+							<div class="book-cover">
+								<img src="<%= book.cover || '/images/placeholder-book.png' %>" alt="<%= book.title %>">
+								<div class="book-badge">Mới</div>
+							</div>
+							<div class="book-info">
+								<h4 class="book-title"><%= book.title %></h4>
+								<p class="book-author"><%= book.author %></p>
+								<p class="book-year"><%= book.year || 'N/A' %></p>
+								<a href="/books/<%= book.id %>" class="btn btn-primary">Xem chi tiết</a>
 							</div>
 						</article>
 					<% }) %>
 				<% } %>
 			</div>
 		</section>
+
+		<!-- Info Section -->
+		<section class="info-section">
+			<div class="container">
+				<h3 class="section-title">Về hệ thống</h3>
+				<div class="info-grid">
+					<div class="info-card">
+						<h4>💡 Tiện lợi</h4>
+						<p>Quản lý và tra cứu thư viện trực tuyến, tiết kiệm thời gian cho người dùng.</p>
+					</div>
+					<div class="info-card">
+						<h4>🔒 An toàn</h4>
+						<p>Dữ liệu được bảo mật, quyền truy cập được kiểm soát theo vai trò.</p>
+					</div>
+					<div class="info-card">
+						<h4>📱 Responsive</h4>
+						<p>Sử dụng trên mọi thiết bị: máy tính, tablet hay điện thoại di động.</p>
+					</div>
+				</div>
+			</div>
+		</section>
 	</main>
 
+	<!-- Footer -->
 	<footer class="site-footer">
 		<div class="container footer-inner">
-			<p>Bản quyền © <%= new Date().getFullYear() %> Thư viện. Bảo lưu mọi quyền.</p>
+			<div class="footer-content">
+				<div class="footer-section">
+					<h5>Về chúng tôi</h5>
+					<p>Thư viện Trường Học - Nơi lưu trữ và quản lý tư liệu của nhà trường.</p>
+				</div>
+				<div class="footer-section">
+					<h5>Liên kết nhanh</h5>
+					<ul>
+						<li><a href="/books">Sách</a></li>
+						<li><a href="/members">Độc giả</a></li>
+						<li><a href="/stats">Thống kê</a></li>
+					</ul>
+				</div>
+				<div class="footer-section">
+					<h5>Liên hệ</h5>
+					<p>Email: library@school.edu.vn<br>Điện thoại: (84) 123-456-789</p>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<p>Bản quyền © <%= new Date().getFullYear() %> Thư viện Trường Học. Bảo lưu mọi quyền.</p>
+			</div>
 		</div>
 	</footer>
 </body>
