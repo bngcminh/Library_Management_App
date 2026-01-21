@@ -13,6 +13,7 @@
 		<div class="container header-inner">
 			<div class="header-logo">
 				<h1 class="logo">📚 Thư viện Trường Học</h1>
+				<p class="logo-sub">Hệ thống quản lý tư liệu & mượn trả</p>
 			</div>
 
 			<!-- Mobile nav toggle (CSS-only) -->
@@ -41,15 +42,70 @@
 		<section class="hero">
 			<div class="container hero-inner">
 				<div class="hero-text">
-					<h2>Chào mừng đến thư viện</h2>
-					<p>Hệ thống quản lý tư liệu tích hợp - Tra cứu sách, theo dõi mượn trả và quản lý độc giả một cách dễ dàng và hiệu quả.</p>
+					<div class="eyebrow">Nền tảng thư viện số & vật lý</div>
+					<h2>Quản lý, tra cứu và mượn trả sách chỉ trong vài bước</h2>
+					<p>Tra cứu nhanh, đặt mượn online, nhận nhắc hạn trả và xem thống kê trực quan cho cán bộ thư viện.</p>
 					<form action="/search" method="GET" class="search-form">
 						<input type="search" name="q" placeholder="Tìm sách theo tên, tác giả, ISBN..." aria-label="Tìm kiếm sách">
 						<button type="submit" class="btn-search">Tìm kiếm</button>
 					</form>
+					<div class="hero-tags">
+						<span class="tag">Giáo trình</span>
+						<span class="tag">Sách tham khảo</span>
+						<span class="tag">Tạp chí</span>
+						<span class="tag">Luận văn</span>
+					</div>
+					<div class="hero-actions">
+						<a class="btn btn-primary" href="/books">Khám phá thư viện</a>
+						<a class="btn btn-outline" href="/borrow">Tạo yêu cầu mượn</a>
+					</div>
 				</div>
-				<div class="hero-illustration">
-					<div class="illustration-placeholder">📖</div>
+				<div class="hero-illustration card-glass">
+					<div class="illustration-header">
+						<div class="pill success">Trực tuyến</div>
+						<div class="pill neutral">24/7</div>
+					</div>
+					<div class="illustration-main">
+						<div class="illu-title">Bảng điều khiển thư viện</div>
+						<ul class="illu-list">
+							<li>📕 Tài liệu số hóa</li>
+							<li>📦 Kho sách vật lý</li>
+							<li>⏱ Nhắc hạn trả tự động</li>
+							<li>📊 Báo cáo thống kê</li>
+						</ul>
+						<div class="illu-progress">
+							<div class="progress-label">
+								<span>Mức độ sẵn sàng</span>
+								<span>92%</span>
+							</div>
+							<div class="progress-bar"><span style="width:92%"></span></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Highlights -->
+		<section class="container highlights">
+			<div class="highlight-card">
+				<div class="highlight-icon">🚀</div>
+				<div>
+					<h3>Tra cứu tức thời</h3>
+					<p>Kết quả theo tên sách, tác giả, ISBN và bộ lọc nâng cao.</p>
+				</div>
+			</div>
+			<div class="highlight-card">
+				<div class="highlight-icon">🔄</div>
+				<div>
+					<h3>Mượn/Trả liền mạch</h3>
+					<p>Đặt mượn online, theo dõi trạng thái, nhận nhắc hạn trả.</p>
+				</div>
+			</div>
+			<div class="highlight-card">
+				<div class="highlight-icon">📈</div>
+				<div>
+					<h3>Thống kê rõ ràng</h3>
+					<p>Báo cáo lượt mượn, tồn kho, độc giả tích cực theo thời gian.</p>
 				</div>
 			</div>
 		</section>
@@ -58,10 +114,10 @@
 		<section class="stats-section container">
 			<div class="stats-grid">
 				<div class="stat-card">
-					<div class="stat-icon">📕</div>
+					<div class="stat-icon">📚</div>
 					<div class="stat-content">
 						<span class="stat-num"><%= typeof stats !== 'undefined' && stats.books ? stats.books : '0' %></span>
-						<span class="stat-label">Tổng số sách</span>
+						<span class="stat-label">Tài liệu hiện có</span>
 					</div>
 				</div>
 				<div class="stat-card">
@@ -72,7 +128,7 @@
 					</div>
 				</div>
 				<div class="stat-card">
-					<div class="stat-icon">📤</div>
+					<div class="stat-icon">⏳</div>
 					<div class="stat-content">
 						<span class="stat-num"><%= typeof stats !== 'undefined' && stats.borrowed ? stats.borrowed : '0' %></span>
 						<span class="stat-label">Đang mượn</span>
@@ -88,36 +144,58 @@
 			</div>
 		</section>
 
-		<!-- Quick Actions -->
-		<section class="quick-actions container">
-			<h3 class="section-title">Thao tác nhanh</h3>
-			<div class="actions-grid">
-				<a href="/books" class="action-card">
-					<div class="action-icon">🔍</div>
-					<h4>Tìm sách</h4>
-					<p>Tra cứu sách theo các tiêu chí</p>
+		<!-- Collections -->
+		<section class="container collections">
+			<div class="section-head">
+				<div>
+					<p class="eyebrow">Danh mục nổi bật</p>
+					<h3>Bộ sưu tập sách & tài liệu</h3>
+					<p class="muted">Chọn nhanh theo nhu cầu học tập, nghiên cứu, tham khảo.</p>
+				</div>
+				<div class="pill-group">
+					<span class="pill neutral">Giáo trình</span>
+					<span class="pill neutral">Tham khảo</span>
+					<span class="pill neutral">Luận văn</span>
+					<span class="pill neutral">Tạp chí</span>
+				</div>
+			</div>
+			<div class="collection-grid">
+				<a href="/books" class="collection-card">
+					<div class="collection-icon">🎓</div>
+					<h4>Giáo trình & đề cương</h4>
+					<p>Tài liệu chính thức theo môn học, luôn cập nhật.</p>
+					<span class="link-text">Xem ngay →</span>
 				</a>
-				<a href="/members" class="action-card">
-					<div class="action-icon">📋</div>
-					<h4>Danh sách độc giả</h4>
-					<p>Xem thông tin độc giả</p>
+				<a href="/books" class="collection-card">
+					<div class="collection-icon">🧪</div>
+					<h4>Nghiên cứu & STEM</h4>
+					<p>Sách, journal, proceedings phục vụ nghiên cứu khoa học.</p>
+					<span class="link-text">Khám phá →</span>
 				</a>
-				<a href="/borrow" class="action-card">
-					<div class="action-icon">🏷️</div>
-					<h4>Mượn/Trả sách</h4>
-					<p>Quản lý mượn trả tư liệu</p>
+				<a href="/books" class="collection-card">
+					<div class="collection-icon">🌏</div>
+					<h4>Kỹ năng & ngoại ngữ</h4>
+					<p>Tài liệu kỹ năng mềm, ngoại ngữ, luyện thi chứng chỉ.</p>
+					<span class="link-text">Bắt đầu →</span>
 				</a>
-				<a href="/stats" class="action-card">
-					<div class="action-icon">📊</div>
-					<h4>Thống kê</h4>
-					<p>Xem báo cáo chi tiết</p>
+				<a href="/books" class="collection-card">
+					<div class="collection-icon">📜</div>
+					<h4>Luận văn & lưu trữ</h4>
+					<p>Lưu chiểu khóa luận, luận văn, đề tài nội bộ.</p>
+					<span class="link-text">Xem kho →</span>
 				</a>
 			</div>
 		</section>
 
 		<!-- Featured Books Section -->
-		<section class="books-section container">
-			<h3 class="section-title">Sách mới cập nhật</h3>
+		<section class="container books-section">
+			<div class="section-head">
+				<div>
+					<p class="eyebrow">Sách mới</p>
+					<h3>Sách vừa cập nhật</h3>
+				</div>
+				<a href="/books" class="link-text">Xem tất cả sách →</a>
+			</div>
 			<% const list = typeof books !== 'undefined' ? books : []; %>
 			<div class="book-grid">
 				<% if (list.length === 0) { %>
@@ -144,22 +222,71 @@
 			</div>
 		</section>
 
+		<!-- How it works & CTA -->
+		<section class="container dual-grid">
+			<div class="card-steps">
+				<p class="eyebrow">3 bước</p>
+				<h3>Sử dụng thư viện nhanh</h3>
+				<ol class="steps">
+					<li>
+						<div class="step-icon">1</div>
+						<div>
+							<h4>Tạo tài khoản</h4>
+							<p>Đăng ký online, xác nhận thông tin độc giả.</p>
+						</div>
+					</li>
+					<li>
+						<div class="step-icon">2</div>
+						<div>
+							<h4>Tra cứu & đặt mượn</h4>
+							<p>Tìm sách, chọn thời gian mượn, theo dõi trạng thái.</p>
+						</div>
+					</li>
+					<li>
+						<div class="step-icon">3</div>
+						<div>
+							<h4>Nhận nhắc hạn trả</h4>
+							<p>Hệ thống nhắc hạn, hỗ trợ gia hạn khi cần.</p>
+						</div>
+					</li>
+				</ol>
+			</div>
+			<div class="card-cta">
+				<div class="pill success">Đề xuất</div>
+				<h3>Tìm không thấy sách bạn cần?</h3>
+				<p>Gửi yêu cầu bổ sung tài liệu để cán bộ thư viện xem xét và nhập kho.</p>
+				<div class="cta-actions">
+					<a class="btn btn-primary" href="/books">Gửi yêu cầu</a>
+					<a class="btn btn-outline" href="/stats">Xem tình trạng xử lý</a>
+				</div>
+			</div>
+		</section>
+
 		<!-- Info Section -->
 		<section class="info-section">
 			<div class="container">
-				<h3 class="section-title">Về hệ thống</h3>
+				<div class="section-head">
+					<div>
+						<p class="eyebrow">Giá trị cốt lõi</p>
+						<h3>Vì sao chọn hệ thống này</h3>
+					</div>
+				</div>
 				<div class="info-grid">
 					<div class="info-card">
-						<h4>💡 Tiện lợi</h4>
-						<p>Quản lý và tra cứu thư viện trực tuyến, tiết kiệm thời gian cho người dùng.</p>
+						<h4>💡 Trực quan</h4>
+						<p>Bảng điều khiển gọn, dễ thao tác cho cả độc giả và thủ thư.</p>
 					</div>
 					<div class="info-card">
 						<h4>🔒 An toàn</h4>
-						<p>Dữ liệu được bảo mật, quyền truy cập được kiểm soát theo vai trò.</p>
+						<p>Phân quyền vai trò, bảo vệ dữ liệu, ghi nhật ký thao tác.</p>
 					</div>
 					<div class="info-card">
-						<h4>📱 Responsive</h4>
-						<p>Sử dụng trên mọi thiết bị: máy tính, tablet hay điện thoại di động.</p>
+						<h4>⚡ Nhanh chóng</h4>
+						<p>Tìm kiếm tức thời, quy trình mượn trả tinh gọn.</p>
+					</div>
+					<div class="info-card">
+						<h4>📱 Đa thiết bị</h4>
+						<p>Hoạt động tốt trên desktop, tablet, điện thoại.</p>
 					</div>
 				</div>
 			</div>
@@ -172,7 +299,7 @@
 			<div class="footer-content">
 				<div class="footer-section">
 					<h5>Về chúng tôi</h5>
-					<p>Thư viện Trường Học - Nơi lưu trữ và quản lý tư liệu của nhà trường.</p>
+					<p>Thư viện Trường Học - Nền tảng quản lý tư liệu số & vật lý, hỗ trợ mượn trả và báo cáo thống kê.</p>
 				</div>
 				<div class="footer-section">
 					<h5>Liên kết nhanh</h5>
