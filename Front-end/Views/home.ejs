@@ -14,6 +14,13 @@
 			<div class="header-logo">
 				<h1 class="logo">📚 Thư viện Trường Học</h1>
 			</div>
+
+			<!-- Mobile nav toggle (CSS-only) -->
+			<input class="nav-toggle" type="checkbox" id="navToggle" aria-label="Mở/đóng menu">
+			<label class="nav-burger" for="navToggle" aria-hidden="true">
+				<span></span><span></span><span></span>
+			</label>
+
 			<nav class="main-nav">
 				<a href="/" class="nav-link active">Trang chủ</a>
 				<a href="/books" class="nav-link">Sách</a>
@@ -23,8 +30,8 @@
 				<a href="/stats" class="nav-link">Thống kê</a>
 			</nav>
 			<div class="auth-links">
-				<button class="btn-login" id="loginBtn">Đăng nhập</button>
-				<button class="btn-register" id="registerBtn">Đăng ký</button>
+				<a class="btn-login" href="#loginModal">Đăng nhập</a>
+				<a class="btn-register" href="#registerModal">Đăng ký</a>
 			</div>
 		</div>
 	</header>
@@ -187,11 +194,12 @@
 	</footer>
 
 	<!-- Login Modal -->
-	<div class="modal" id="loginModal">
+	<div class="modal" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+		<a class="modal-overlay" href="#" aria-label="Đóng"></a>
 		<div class="modal-content login-form-container">
-			<button class="modal-close" id="closeLoginModal">&times;</button>
+			<a class="modal-close" href="#" aria-label="Đóng">&times;</a>
 			<div class="form-header">
-				<h2>Đăng nhập</h2>
+				<h2 id="loginTitle">Đăng nhập</h2>
 				<p>Đăng nhập để truy cập hệ thống thư viện</p>
 			</div>
 			<form class="auth-form" id="loginForm">
@@ -210,18 +218,19 @@
 				<button type="submit" class="btn btn-primary btn-block">Đăng nhập</button>
 			</form>
 			<div class="form-footer">
-				<p>Chưa có tài khoản? <a href="#" id="switchToRegister">Đăng ký ngay</a></p>
+				<p>Chưa có tài khoản? <a href="#registerModal">Đăng ký ngay</a></p>
 				<p><a href="#" class="forgot-link">Quên mật khẩu?</a></p>
 			</div>
 		</div>
 	</div>
 
 	<!-- Register Modal -->
-	<div class="modal" id="registerModal">
+	<div class="modal" id="registerModal" role="dialog" aria-modal="true" aria-labelledby="registerTitle">
+		<a class="modal-overlay" href="#" aria-label="Đóng"></a>
 		<div class="modal-content register-form-container">
-			<button class="modal-close" id="closeRegisterModal">&times;</button>
+			<a class="modal-close" href="#" aria-label="Đóng">&times;</a>
 			<div class="form-header">
-				<h2>Đăng ký tài khoản</h2>
+				<h2 id="registerTitle">Đăng ký tài khoản</h2>
 				<p>Tạo tài khoản để sử dụng các dịch vụ của thư viện</p>
 			</div>
 			<form class="auth-form" id="registerForm">
@@ -252,12 +261,9 @@
 				<button type="submit" class="btn btn-primary btn-block">Đăng ký</button>
 			</form>
 			<div class="form-footer">
-				<p>Đã có tài khoản? <a href="#" id="switchToLogin">Đăng nhập</a></p>
+				<p>Đã có tài khoản? <a href="#loginModal">Đăng nhập</a></p>
 			</div>
 		</div>
 	</div>
-
-	<!-- Overlay for modals -->
-	<div class="modal-overlay" id="modalOverlay"></div>
 </body>
 </html>
